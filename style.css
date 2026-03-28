@@ -1,0 +1,568 @@
+/* --- GLOBALI STILOVI --- */
+:root {
+    --main-bg: #F5F1E9;
+    --pale-bg: #E8E2D6;
+    --dark-green: #2D5B21;
+    --gray-text: #2D5B21; 
+    --black-footer: #000000;
+    --gold-gradient-start: #CFB182;
+    --gold-gradient-end: #A8854B;
+    --nav-blue: #2D5B21; 
+    --font-family: 'Open Sans', Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Zabrana horizontalnog skrolovanja na celom dokumentu */
+html {
+    font-family: var(--font-family);
+    scroll-behavior: smooth;
+    background-color: var(--main-bg);
+    overflow-x: hidden; 
+    max-width: 100%;    
+}
+
+body {
+    background-color: var(--main-bg);
+    padding-top: 60px;
+    overflow-x: hidden; 
+    max-width: 100%;    
+    color: var(--dark-green); 
+}
+
+/* --- ANIMACIJE (SCROLL EFFECT) --- */
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-in-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* --- LAYOUT UTILITY CLASSES --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.grid-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 80px 0;
+}
+
+/* FIX: Zakucavamo kolone na tačno 50% prostora kako bi SVAKI naslov bio u istoj vertikalnoj liniji */
+.text-col, .title-and-button-col, .image-col, .contact-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: center;
+    flex: 0 0 calc(50% - 30px);
+    max-width: calc(50% - 30px);
+}
+
+/* --- BOJE --- */
+.beige-bg { background-color: var(--main-bg); }
+.pale-beige-bg { background-color: var(--pale-bg); }
+.dark-green-text { color: var(--dark-green); }
+.gray-text { color: var(--gray-text); }
+
+/* --- TIPIOGRAFIJA --- */
+.main-title {
+    font-size: 64px;
+    line-height: 1.1;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align: left; 
+}
+
+.subtitle {
+    font-size: 22px;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.date-info {
+    font-size: 18px;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+p, .result-box, .check-list li, .bullet-list li {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* --- DUGME (CTA) --- */
+/* --- DUGME (CTA) --- */
+/* --- DUGME (CTA) --- */
+.cta-button {
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+    
+    padding: 10px 8px 10px 8px; 
+    
+    background-color: transparent; 
+    border: 3px solid #B68D40; 
+    border-radius: 8px; 
+    
+    color: #B68D40; 
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    
+    align-self: flex-start !important; 
+    margin-left: 0 !important; 
+    
+    /* OVO JE KLJUČNO: Strogo zabranjuje prelazak teksta u drugi red */
+    white-space: nowrap; 
+    
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    background-color: #B68D40; 
+    color: #FFFFFF; 
+}
+
+/* --- HEADER TEXT NA DESNU STRANU --- */
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--main-bg);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 15px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.reset-link {
+    text-decoration: none;
+    color: var(--nav-blue);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* --- SEKCIJA 1: HERO --- */
+.hero-section {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* --- SLIKA FRAME STYLING --- */
+.responsive-img {
+    width: 100%;
+    height: 500px; 
+    border-radius: 12px; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12); 
+    border: 1px solid rgba(0,0,0,0.05); 
+    display: block;
+    object-fit: cover; 
+    object-position: center; 
+}
+
+/* --- PLACEHOLDERI ZA SLIKE --- */
+.image-placeholder {
+    background-color: #E2E2E2;
+    border: 2px dashed #A0A0A0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888888;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+}
+
+.pool-placeholder, .retreat-item-placeholder {
+    min-height: 550px;
+    width: 100%;
+}
+
+.flowers-placeholder, .people-placeholder {
+    min-height: 500px;
+    width: 100%;
+}
+
+/* --- SEKCIJA 3: REZULTATI --- */
+.results-grid {
+    align-items: start;
+    padding-bottom: 40px;
+}
+
+.results-btn {
+    margin-top: 15px;
+}
+
+.result-box {
+    background-color: var(--main-bg);
+    border: 1px solid rgba(0,0,0,0.15);
+    color: var(--dark-green);
+    padding: 15px 25px; 
+    margin: 0 0 12px 0; 
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: left; 
+    width: 100%;
+    display: block; 
+    box-sizing: border-box; 
+}
+
+.final-statement {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 30px;
+    font-style: italic;
+    font-weight: 400;
+    padding-bottom: 20px;
+}
+
+/* --- SEKCIJA 4: NAMENJEN --- */
+.target-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.target-section .container {
+    max-width: 1100px;
+}
+
+.check-list, .bullet-list {
+    list-style-type: none;
+    margin-top: 25px;
+}
+
+.check-list li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 18px;
+    font-size: 16px;
+}
+
+.check-list li::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    background-color: var(--gray-text);
+    border-radius: 50%;
+}
+
+/* --- SEKCIJA 5: OKRUŽENJE --- */
+.environment-section {
+    padding-top: 80px; 
+}
+
+.grid-2-text {
+    max-width: 1000px;
+}
+
+.main-env-text {
+    padding-top: 20px;
+    align-items: start;
+}
+
+.environment-section .grid-2.main-env-text {
+    padding-top: 20px; 
+    padding-bottom: 20px;
+}
+
+.offers-text .intro-p {
+    font-weight: 600;
+}
+
+/* FIX: Podešen razmak od 40px između dve slike kako se ne bi dodirivale */
+.env-images {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    gap: 40px; 
+}
+
+.bullet-list li {
+    padding-left: 25px; 
+    position: relative;
+}
+
+.bullet-list li::before {
+    content: '•';
+    position: absolute;
+    left: 5px;
+    color: var(--gray-text);
+}
+
+/* --- SEKCIJA 6: ŠTA JE UKLJUČENO --- */
+.price-p {
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.attendance-p {
+    font-size: 16px;
+    max-width: 500px;
+}
+
+.included-section .image-placeholder {
+    margin-top: -30px;
+}
+
+/* --- SEKCIJA 7: CTA --- */
+.contact-info, .contact-email {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.final-join {
+    font-size: 18px;
+    margin-top: 50px;
+    font-style: italic;
+    color: var(--gray-text);
+    max-width: 500px;
+}
+
+.strong {
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+
+/* --- FOOTER, BACK-TO-TOP DUGME, DISKLEJMER --- */
+.all-rights-disclaimer {
+    text-align: center;
+    color: var(--gray-text);
+    font-size: 13px;
+    font-style: italic;
+    padding: 20px 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.main-footer {
+    background-color: var(--black-footer);
+    color: white;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.back-to-top-btn {
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 5px 10px;
+    border-radius: 2px;
+    transition: 0.2s;
+}
+
+.back-to-top-btn:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* --- RESPONSIVE OPTIMIZACIJA (Mobilni/Telefon) --- */
+@media screen and (max-width: 1024px) {
+    .grid-2 { gap: 40px; padding: 60px 0; }
+    .main-title { font-size: 50px; }
+    .section-title { font-size: 34px; }
+}
+
+@media screen and (max-width: 768px) {
+    body { padding-top: 50px; }
+    
+    .fixed-nav { padding: 10px 0; justify-content: center; } 
+    .header-container { padding: 0 25px; justify-content: center; } 
+    
+    .reset-link { font-size: 16px; }
+    
+    .container { padding: 0 25px; }
+    
+    .grid-2 {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 40px 0;
+        text-align: center;
+    }
+    
+    .reverse-order {
+        flex-direction: column-reverse;
+    }
+    
+    /* FIX: Oslobađamo kolone na mobilnom da zauzmu punu širinu */
+    .text-col, .image-col, .contact-col, .title-and-button-col {
+        width: 100%;
+        max-width: 100%; 
+        flex: 1 1 100%; 
+        align-items: center; 
+        text-align: center; 
+    }
+    
+    .section-title { 
+        font-size: 28px; 
+        margin-bottom: 20px;
+        text-align: center !important; 
+        width: 100%;
+    }
+    
+    .title-col-full {
+        text-align: center;
+        width: 100%;
+    }
+    
+/* Mobilni: Dugme je ZAKUCANO na sredinu i prilagođeno da stane u jedan red */
+    .cta-button {
+        align-self: center !important; 
+        margin: 0 auto !important; 
+        
+        /* Blago smanjujemo font i razmak kako bi dugačak tekst stao na uske ekrane telefona */
+        font-size: 15px; 
+        letter-spacing: 1px; 
+        padding: 10px 16px; 
+    }
+    
+    .main-title { font-size: 42px; margin-bottom: 15px; text-align: center;}
+    .subtitle { font-size: 19px; }
+    
+    .image-placeholder { min-height: 250px; }
+    .pool-placeholder, .flowers-placeholder, .people-placeholder, .retreat-item-placeholder { min-height: 280px; width: 100%;}
+    
+    .result-box { 
+        text-align: left; 
+        max-width: 100%; 
+        margin: 0 0 12px 0;
+    }
+    
+    .main-env-text, .env-images {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .main-env-text { align-items: center; text-align: center; }
+    .bullet-list li, .check-list li { text-align: left;}
+    
+    .included-section .image-placeholder {
+        margin-top: 20px;
+    }
+    
+    .price-p { font-size: 19px;}
+    .attendance-p { margin-left: auto; margin-right: auto; }
+    
+    .cta-section { padding-bottom: 40px; }
+    .contact-info, .contact-email, .final-join {
+        max-width: 100%;
+        margin-left: auto; margin-right: auto;
+    }
+    
+    .final-field-placeholder { height: 200px; font-size: 14px;}
+    
+    .footer-grid { flex-direction: column; text-align: center; gap: 15px; }
+    .footer-grid .back-to-top-btn { margin-left: auto; margin-right: auto;}
+}
+
+
+/* --- --- NOVI STILOVI ZA BANER SLIKU NA DNU --- --- */
+
+.banner-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.banner-container {
+    max-width: 1200px; /* Širina sajta */
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.banner-image {
+    width: 100%;
+    /* Visina je fiksirana na 350px (kao tvoj originalni placeholder) */
+    height: 350px; 
+    
+    /* THE FIX: Automatski seče sliku da popuni okvir bez deformisanja */
+    object-fit: cover; 
+    object-position: center; /* Fokusira se na centar vinograda */
+    
+    /* Primenjujemo isti stil okvira kao na ostalim slikama na sajtu */
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.05);
+    display: block;
+}
+
+/* --- RESPONSIVE OPTIMIZACIJA ZA MOBILNI (Dodaj ovo na dnu, unutar @media blocka) --- */
+@media screen and (max-width: 768px) {
+    /* ... ostali stilovi za mobilni ... */
+
+    .banner-container {
+        padding: 0 0px; /* Smanjen padding na mobilnom */
+    }
+
+    .banner-image {
+        /* Na mobilnom smanjujemo visinu na 200px da se slika bolje "vidi" */
+        height: 300px; 
+    }
+}
